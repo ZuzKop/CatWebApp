@@ -1,14 +1,14 @@
+import Layout from "./components/Layout/Layout";
 import TestComponent from "./components/TestComponent";
-import CatFact from "./components/CatFact/CatFact";
-import CatPicture from "./components/CatPicture/CatPicture";
+import RandomCatContentTabs from "./components/RandomCatContentTabs";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
       <TestComponent name={"Kituś"} />
-      <CatPicture />
-      <CatFact />
+      <Layout />
+      <RandomCatContentTabs />
     </div>
   );
 }

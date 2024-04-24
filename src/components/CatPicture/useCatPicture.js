@@ -18,7 +18,5 @@ export function useCatPicture() {
     }
   };
 
-  console.log(fetchedCatPicture);
-
   return { fetchedCatPicture, fetchCatPicture };
 }
