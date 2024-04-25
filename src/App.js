@@ -1,12 +1,10 @@
-import TestComponent from "./components/TestComponent";
-import RandomCatContent from "./components/RadomCatContent";
+import Layout from "./components/Layout/Layout";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <TestComponent name={"Kituś"} />
-      <RandomCatContent />
+      <Layout />
     </div>
   );
 }
