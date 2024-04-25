@@ -6,6 +6,7 @@ import CatFact from "./CatFact/CatFact";
 import CatPicture from "./CatPicture/CatPicture";
 
 function TabPanel(props) {
+  
     const { children, value, index } = props;
   
     return (
@@ -16,7 +17,7 @@ function TabPanel(props) {
       >
         {value === index && (
           <Box sx={{ p: 3 }}>
-            <Typography>{children}</Typography>
+            {children}
           </Box>
         )}
       </div>
@@ -30,35 +31,45 @@ function TabPanel(props) {
   };
 
 
-const RandomCatContentTabs = () => {
-
+const RandomCatContentTabs = ({catPicture, updateCatPicture, catFact, updateCatFact}) => {
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
- 
 
     return(
-        <Box>
-            
+      <Box>        
         <Tabs
           value={value}
           onChange={handleChange}
           centered
         >
-            <Tab label="Cat Facts"/>
-            <Tab label="Cat Pictures"/>
+          <Tab label="Cat Facts"/>
+          <Tab label="Cat Pictures"/>
 
         </Tabs>
-             <TabPanel value={value} index={0}>
-      <CatFact />
-           </TabPanel>
-           <TabPanel value={value} index={1}>
-      <CatPicture />
-           </TabPanel>
-           
-        </Box>
+
+        <TabPanel value={value} index={0}>
+          <CatFact 
+            catFact={catFact}
+            updateCatFact={updateCatFact}
+          />
+        </TabPanel>
+
+        <TabPanel value={value} index={1}>
+          <CatPicture 
+            catPicture={catPicture}
+            updateCatPicture={updateCatPicture}
+            />
+        </TabPanel>  
+      </Box>
     )
+}
+RandomCatContentTabs.propTypes={
+  updateCatPicture: PropTypes.func.isRequired,
+  catPicture: PropTypes.string,  
+  updateCatFact: PropTypes.func.isRequired,
+  catFact: PropTypes.string,
 }
 export default RandomCatContentTabs;

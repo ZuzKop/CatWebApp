@@ -1,24 +1,6 @@
-import React, { useEffect } from "react";
 import Button from "@mui/material/Button";
-import { useCatFact } from "./useCatFact";
 
-const CatPicture = () => {
-  const [catFact, setCatFact] = React.useState("");
-
-  const { fetchedCatFact, fetchCatFact } = useCatFact();
-
-  useEffect(() => {
-    updateCatFact();
-  }, []);
-
-  const updateCatFact = async () => {
-    fetchCatFact();
-  };
-
-  useEffect(() => {
-    setCatFact(fetchedCatFact);
-  }, [fetchedCatFact]);
-
+const CatPicture = ({catFact, updateCatFact}) => {
   return (
     <div>
       <h1>{catFact}</h1>
