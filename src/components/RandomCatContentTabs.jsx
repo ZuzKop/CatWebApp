@@ -31,7 +31,7 @@ function TabPanel(props) {
   };
 
 
-const RandomCatContentTabs = ({catPicture, updateCatPicture, catFact, updateCatFact}) => {
+const RandomCatContentTabs = ({catPicture, updateCatPicture, catFact, updateCatFact, savedCatFacts, setSavedCatFacts}) => {
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
@@ -54,6 +54,8 @@ const RandomCatContentTabs = ({catPicture, updateCatPicture, catFact, updateCatF
           <CatFact 
             catFact={catFact}
             updateCatFact={updateCatFact}
+            savedCatFacts={savedCatFacts}
+            setSavedCatFacts={setSavedCatFacts}
           />
         </TabPanel>
 

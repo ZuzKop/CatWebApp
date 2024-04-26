@@ -7,6 +7,7 @@ const RandomCatContent = () => {
     
     const [catPicture, setCatPicture] = useState("");
     const [catFact, setCatFact] = useState("");
+    const [savedCatFacts, setSavedCatFacts] = useState([]);
     const { fetchedCatPicture, fetchCatPicture } = useCatPicture();
     const { fetchedCatFact, fetchCatFact } = useCatFact();
 
@@ -38,6 +39,8 @@ const RandomCatContent = () => {
               updateCatPicture={updateCatPicture}
               catFact={catFact}
               updateCatFact={updateCatFact}
+              savedCatFacts={savedCatFacts}
+              setSavedCatFacts={setSavedCatFacts}
             />
         </div>
 )
