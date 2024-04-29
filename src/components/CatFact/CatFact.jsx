@@ -1,34 +1,70 @@
-import {Box, Button, IconButton } from "@mui/material";
-import BookmarkIcon from '@mui/icons-material/Bookmark';
+import { Box, Button, Divider } from "@mui/material";
+import { BookmarkBorder, Bookmark } from "@mui/icons-material";
 import SavedCatFacts from "./SavedCatFactsList";
+import CatFactModuleCSS from "./CatFact.module.css";
 
-const CatPicture = ({catFact, updateCatFact, savedCatFacts, setSavedCatFacts}) => {
+const updateCatFacts = (savedCatFacts, setSavedCatFacts, catFact) => {
+  if (!savedCatFacts.some((item) => item === catFact)) {
+    setSavedCatFacts((prevFacts) => [...prevFacts, catFact]);
+  } else {
+    setSavedCatFacts((prevFacts) =>
+      prevFacts.filter((fact) => fact !== catFact)
+    );
+  }
+};
+
+const BookmarkIcon = ({ savedCatFacts, catFact, setSavedCatFacts }) => {
+  const Icon = savedCatFacts.some((item) => item === catFact)
+    ? Bookmark
+    : BookmarkBorder;
+
   return (
     <Box>
-      <Box style={{display: 'flex', alignItems: 'center'}}>
-        <BookmarkIcon 
-          style={{width: '50px', flexShrink: 0, position: 'relative', top: '-80px' }} 
-          fontSize="large"             
-          onClick={() => {
-            setSavedCatFacts(prevFacts => [...prevFacts, catFact]);
-            }}
-         />
-        <Box style={{width: '90%'}}>
-          <h1>{catFact}</h1>
-          <Button
-        variant="contained"
+      <Icon
+        className={CatFactModuleCSS.BookmarkIcon}
+        fontSize="large"
         onClick={() => {
-          updateCatFact();
+          updateCatFacts(savedCatFacts, setSavedCatFacts, catFact);
         }}
-      >
-        Generate a cat fact!
-      </Button>
-        </Box> 
-      </Box >
-<Box style={{paddingTop:'15px', marginLeft: '40px' }} >
-      <SavedCatFacts savedCatFacts={savedCatFacts}/>
+      />
+    </Box>
+  );
+};
 
-</Box>
+const CatPicture = ({
+  catFact,
+  updateCatFact,
+  savedCatFacts,
+  setSavedCatFacts,
+}) => {
+  return (
+    <Box>
+      <Box>
+        <Box style={{ display: "flex", justifyContent: "center" }}>
+          <BookmarkIcon
+            savedCatFacts={savedCatFacts}
+            catFact={catFact}
+            setSavedCatFacts={setSavedCatFacts}
+          ></BookmarkIcon>
+          <h1>{catFact}</h1>
+        </Box>
+        <Button
+          variant="contained"
+          onClick={() => {
+            updateCatFact();
+          }}
+        >
+          Generate a cat fact!
+        </Button>
+      </Box>
+      <Divider variant="middle" style={{ padding: "10px", opacity: 0.33 }} />
+      <Box>
+        <SavedCatFacts
+          savedCatFacts={savedCatFacts}
+          updateCatFacts={updateCatFacts}
+          setSavedCatFacts={setSavedCatFacts}
+        />
+      </Box>
     </Box>
   );
 };

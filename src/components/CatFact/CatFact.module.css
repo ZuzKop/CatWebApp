@@ -1,0 +1,26 @@
+.bookmarkIcon {
+  width: 50px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.factHover:hover {
+  color: #9cc69b;
+}
+
+.factHover:hover ~ .clear {
+  visibility: visible;
+}
+
+.clear {
+  visibility: hidden;
+  padding: 2px;
+  color: #f44336;
+}
+
+.factsFlexbox {
+  display: flex;
+  justify-content: center;
+  flex-direction: row-reverse;
+  padding: 5px;
+}

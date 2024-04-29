@@ -1,14 +1,30 @@
 import { Box } from "@mui/material";
-import ExpandContent from '../ExpandContent/ExpandContent'
+import ExpandContent from "../ExpandContent/ExpandContent";
+import CatFactModuleCSS from "./CatFact.module.css";
+import Clear from "@mui/icons-material/Close";
 
-const SavedCatFacts = ({savedCatFacts}) => {
-    const content = savedCatFacts.map((fact, index) => <span key={index}>{fact}</span>);
+const SavedCatFacts = ({ savedCatFacts, setSavedCatFacts, updateCatFacts }) => {
+  const content = savedCatFacts.map((fact, index) => (
+    <Box
+      onClick={() => {
+        updateCatFacts(savedCatFacts, setSavedCatFacts, fact);
+      }}
+      className={CatFactModuleCSS.factsFlexbox}
+    >
+      <Box className={CatFactModuleCSS.factHover} key={index}>
+        {fact}
+      </Box>
 
-    return (
-        <Box>
-            <ExpandContent content={content} title="Bookmarked Facts"></ExpandContent>
-             
-        </Box>
-    )
-}
+      <Box className={CatFactModuleCSS.clear}>
+        <Clear fontSize="xs" />
+      </Box>
+    </Box>
+  ));
+
+  return (
+    <Box>
+      <ExpandContent content={content} title="Bookmarked Facts"></ExpandContent>
+    </Box>
+  );
+};
 export default SavedCatFacts;
