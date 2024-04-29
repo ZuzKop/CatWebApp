@@ -11,9 +11,8 @@ const SavedCatPictures = ({
     <Box style={{ display: "flex", justifyContent: "center" }}>
       <ImageList sx={{ width: "60vw" }} rowHeight={200} cols={4} gap={8}>
         {savedCatPictures.map((item) => (
-          <ImageListItem key={item} style={{ position: "relative" }}>
+          <ImageListItem className={CatPictureModuleCSS.imageList} key={item}>
             <img
-              className={CatPictureModuleCSS.imageList}
               src={item}
               alt="a cat"
               onClick={() => {

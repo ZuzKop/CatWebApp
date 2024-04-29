@@ -12,11 +12,15 @@
   align-items: flex-end;
 }
 
-.imageList:hover {
+.imageList {
+  position: "relative";
+}
+
+.imageList:hover img {
   filter: brightness(70%);
 }
 
-.imageList:hover + .removeImage {
+.imageList:hover .removeImage {
   visibility: visible;
 }
 
