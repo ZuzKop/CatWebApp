@@ -3,17 +3,20 @@ import ExpandContent from "../ExpandContent/ExpandContent";
 import CatFactModuleCSS from "./CatFact.module.css";
 import Clear from "@mui/icons-material/Close";
 
-const SavedCatFacts = ({ savedCatFacts, setSavedCatFacts, updateCatFacts }) => {
+const SavedCatFacts = ({
+  savedCatFacts,
+  setSavedCatFacts,
+  updateSavedCatFacts,
+}) => {
   const content = savedCatFacts.map((fact, index) => (
     <Box
       onClick={() => {
-        updateCatFacts(savedCatFacts, setSavedCatFacts, fact);
+        updateSavedCatFacts(savedCatFacts, setSavedCatFacts, fact);
       }}
       className={CatFactModuleCSS.factsFlexbox}
+      key={index}
     >
-      <Box className={CatFactModuleCSS.factHover} key={index}>
-        {fact}
-      </Box>
+      <Box className={CatFactModuleCSS.factHover}>{fact}</Box>
 
       <Box className={CatFactModuleCSS.clear}>
         <Clear fontSize="xs" />

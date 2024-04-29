@@ -1,9 +1,10 @@
-import { Box, Button, Divider } from "@mui/material";
+import { Box, Button, CircularProgress, Divider } from "@mui/material";
 import { BookmarkBorder, Bookmark } from "@mui/icons-material";
 import SavedCatFacts from "./SavedCatFactsList";
 import CatFactModuleCSS from "./CatFact.module.css";
+import { useEffect } from "react";
 
-const updateCatFacts = (savedCatFacts, setSavedCatFacts, catFact) => {
+const updateSavedCatFacts = (savedCatFacts, setSavedCatFacts, catFact) => {
   if (!savedCatFacts.some((item) => item === catFact)) {
     setSavedCatFacts((prevFacts) => [...prevFacts, catFact]);
   } else {
@@ -14,6 +15,10 @@ const updateCatFacts = (savedCatFacts, setSavedCatFacts, catFact) => {
 };
 
 const BookmarkIcon = ({ savedCatFacts, catFact, setSavedCatFacts }) => {
+  if (catFact === "") {
+    return null;
+  }
+
   const Icon = savedCatFacts.some((item) => item === catFact)
     ? Bookmark
     : BookmarkBorder;
@@ -24,14 +29,27 @@ const BookmarkIcon = ({ savedCatFacts, catFact, setSavedCatFacts }) => {
         className={CatFactModuleCSS.BookmarkIcon}
         fontSize="large"
         onClick={() => {
-          updateCatFacts(savedCatFacts, setSavedCatFacts, catFact);
+          updateSavedCatFacts(savedCatFacts, setSavedCatFacts, catFact);
         }}
       />
     </Box>
   );
 };
 
-const CatPicture = ({
+const FactDisplay = ({ fact }) => {
+  if (fact === "") {
+    return (
+      <Box style={{ padding: "10px" }}>
+        {" "}
+        <CircularProgress />
+      </Box>
+    );
+  } else {
+    return <h1>{fact}</h1>;
+  }
+};
+
+const CatFact = ({
   catFact,
   updateCatFact,
   savedCatFacts,
@@ -46,12 +64,12 @@ const CatPicture = ({
             catFact={catFact}
             setSavedCatFacts={setSavedCatFacts}
           ></BookmarkIcon>
-          <h1>{catFact}</h1>
+          <FactDisplay fact={catFact} />
         </Box>
         <Button
           variant="contained"
           onClick={() => {
-            updateCatFact();
+            updateCatFact(catFact);
           }}
         >
           Generate a cat fact!
@@ -61,11 +79,11 @@ const CatPicture = ({
       <Box>
         <SavedCatFacts
           savedCatFacts={savedCatFacts}
-          updateCatFacts={updateCatFacts}
+          updateFavedCatFacts={updateSavedCatFacts}
           setSavedCatFacts={setSavedCatFacts}
         />
       </Box>
     </Box>
   );
 };
-export default CatPicture;
+export default CatFact;

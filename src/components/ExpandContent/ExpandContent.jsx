@@ -22,8 +22,8 @@ const ExpandContent = ({ content, title }) => {
   const [expandState, setExpandState] = useState(false);
 
   return (
-    <div style={{ paddingTop: "20px", marginLeft: "10px" }}>
-      <div style={{ display: "flex", justifyContent: "center" }}>
+    <Box style={{ paddingTop: "20px", marginLeft: "10px" }}>
+      <Box style={{ display: "flex", justifyContent: "center" }}>
         <Typography
           style={{
             display: "flex",
@@ -43,11 +43,11 @@ const ExpandContent = ({ content, title }) => {
             }}
           />
         </Typography>
-      </div>
-      <div>
+      </Box>
+      <Box>
         <ExpandedContent expanded={expandState} content={content} />
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 

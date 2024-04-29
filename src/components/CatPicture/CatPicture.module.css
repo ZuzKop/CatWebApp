@@ -1,4 +1,29 @@
-.catImage{
-    max-width: 50%;
-    max-height: 500px;
+.catImage {
+  max-width: 500px;
+  max-height: 500px;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 10px;
+}
+
+.catPicFlexbox {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.imageList:hover {
+  filter: brightness(70%);
+}
+
+.imageList:hover + .removeImage {
+  visibility: visible;
+}
+
+.removeImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  visibility: hidden;
 }
