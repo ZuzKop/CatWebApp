@@ -19,7 +19,7 @@ const ExpandedContent = ({ expanded, content }) => {
 };
 
 const ExpandContent = ({ content, title }) => {
-  const [expandState, setExpandState] = useState(false);
+  const [expandState, setExpandState] = useState(true);
 
   return (
     <Box style={{ paddingTop: "20px", marginLeft: "10px" }}>

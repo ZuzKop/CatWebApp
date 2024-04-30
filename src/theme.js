@@ -10,7 +10,7 @@ const theme = createTheme({
     },
     secondary: {
       main: "#e9c46aff", //yellow
-      dark: "'#f4a261ff'", //orange
+      dark: "#f4a261ff", //orange
     },
     background: {
       default: "#ffff",
